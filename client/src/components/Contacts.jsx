@@ -4,7 +4,10 @@ import Layout from './Layout';
 
 function Contacts() {
     return (
-        <Layout />
+        <Layout content={(
+            <div>
+            </div>
+        )} />
     )
 }
 
