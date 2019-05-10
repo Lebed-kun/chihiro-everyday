@@ -16,8 +16,6 @@ const data = [
             'http://picsum.photos/320/200',
             'http://picsum.photos/320/200'
         ],
-        views : 300,
-        likes : 50,
         comments : 3
     },
 
@@ -31,8 +29,6 @@ const data = [
             'http://picsum.photos/320/200',
             'http://picsum.photos/320/200'
         ],
-        views : 300,
-        likes : 50,
         comments : 3
     },
 
@@ -46,8 +42,6 @@ const data = [
             'http://picsum.photos/320/200',
             'http://picsum.photos/320/200'
         ],
-        views : 300,
-        likes : 50,
         comments : 3
     }
 ];
@@ -80,14 +74,6 @@ const List = (
                     </p>
 
                     <footer>
-                        <span>
-                            {post.views}
-                        </span>
-
-                        <span>
-                            {post.likes}
-                        </span>
-
                         <span>
                             {post.comments}
                         </span>

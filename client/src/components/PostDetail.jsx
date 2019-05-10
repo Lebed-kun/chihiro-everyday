@@ -3,6 +3,8 @@ import React from 'react';
 import { formatDate } from '../utils';
 
 import Layout from './Layout';
+import CommentList from './CommentList';
+import Form from './SubmitComment';
 
 const data = {
     title : 'Hello World!',
@@ -14,8 +16,6 @@ const data = {
             'http://picsum.photos/320/200',
             'http://picsum.photos/320/200'
     ],
-    views : 300,
-    likes : 50,
     comments : [
         {
             name : 'John Byte',
@@ -44,11 +44,6 @@ const Post = (
     <div className="post">
         <h1>{data.title}</h1>
 
-        <h2>
-            <span>by {data.author}</span>
-            <span>posted at {formatDate(data.date, 'd.m.Y H:M')}</span>
-        </h2>
-
         <ul>
             {data.imgUrls.map(url => (
                 <li>
@@ -62,68 +57,11 @@ const Post = (
         </p>
 
         <footer>
-            <span>
-                {data.views}
-            </span>
-
-            <span>
-                {data.likes}
-            </span>
+            <span>by {data.author}</span>
+            <span>posted at {formatDate(data.date, 'd.m.Y H:M')}</span>
         </footer>
     </div>
 );
-
-const Form = (
-    <form className="post-comment">
-        <label htmlFor="name">
-            Name:
-            <input type="text" id="name"/>
-        </label>
-
-        <label htmlFor="email">
-            E-mail:
-            <input type="text" id="email"/>
-        </label>
-
-        <label htmlFor="text">
-            Text:
-            <textarea id="text">
-            </textarea>
-        </label>
-
-        <button type="submit">
-            Submit
-        </button>
-    </form>
-)
-
-const Comments = (
-    <ul className="comments">
-        <h1>Comments</h1>
-
-        {data.comments.map((comment, id) => (
-            <li key={`comment_${id}`}>
-                <h2>
-                    { 
-                        comment.email ? 
-                        <a href={`mailto:${comment.email}`}>
-                            {comment.name}
-                        </a> :
-                        comment.name
-                    }
-                </h2>
-
-                <p>
-                    {comment.text}
-                </p>
-
-                <footer>
-                    {formatDate(comment.date, 'd.m.y H:S')}
-                </footer>
-            </li>
-        ))}
-    </ul>
-)
 
 function PostDetail() {
     return (
@@ -131,8 +69,8 @@ function PostDetail() {
             (
                 <div className="PostDetail">
                     {Post}
-                    {Form}
-                    {Comments}
+                    {<Form />}
+                    {<CommentList comments={data.comments} />}
                 </div>
             )
         } />
