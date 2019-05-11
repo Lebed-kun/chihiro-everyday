@@ -24,3 +24,66 @@ export function formatDate(date, pattern) {
 
     return res;
 }
+
+const checkInput = input => {
+    function checkRequired(input) {
+        let cond = !input.hasAttribute('datarequired') ||
+          input.hasAttribute('datarequired') &&
+          input.value.length > 0;
+    
+        return cond;
+      }
+    
+    function checkEmail(input) {
+        if (!input.hasAttribute('datavalidator') ||
+          input.getAttribute('datavalidator') != 'email') {
+            return true;
+          }
+
+      return input.value.length == 0 || !!input.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    }
+
+    return checkRequired(input) && checkEmail(input);
+}
+
+export function validateInput(input, inputErrorClass) {
+    if (!checkInput(input)) {
+        input.classList.add(inputErrorClass);
+    }
+}
+
+export function clearInputCheck(input, inputErrorClass) {
+    if (input.classList.contains(inputErrorClass)) {
+        input.classList.remove(inputErrorClass);
+    }
+}
+
+export function validateForm(options) {
+    let inputs = options.form.querySelectorAll('input, textarea');
+    
+    if (options.form.classList.contains(options.formInvalidClass)) {
+        options.form.classList.remove(options.formInvalidClass);
+    }
+  
+      if (options.form.classList.contains(options.formValidClass)) {
+        options.form.classList.remove(options.formValidClass);
+      }
+  
+      for (let i = 0; i < inputs.length; i++) {
+        if (!checkInput(inputs[i])) {
+            if (!inputs[i].classList.contains(options.inputErrorClass)) {
+                inputs[i].classList.add(options.inputErrorClass);
+            }
+
+
+            if (!options.form.classList.contains(options.formInvalidClass)) {
+              options.form.classList.add(options.formInvalidClass);
+            }
+  
+        }
+      }
+  
+      if (!options.form.classList.contains(options.formInvalidClass)) {
+        options.form.classList.add(options.formValidClass);
+      }
+}

@@ -45,8 +45,8 @@ const Post = (
         <h1>{data.title}</h1>
 
         <ul>
-            {data.imgUrls.map(url => (
-                <li>
+            {data.imgUrls.map((url, id) => (
+                <li key={`post_img_${id}`}>
                     <img src={url} />
                 </li>
             ))}

@@ -62,8 +62,8 @@ const List = (
                     </h2>
 
                     <ul>
-                       {post.imgUrls.map(url => (
-                           <li>
+                       {post.imgUrls.map((url, id) => (
+                           <li key={`post_img_${id}`}>
                                <img src={url} />
                            </li>
                        ))} 
