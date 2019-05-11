@@ -1,15 +1,16 @@
 from rest_framework import serializers
 
-from blog.models import Post, Image, Comment
+from blog.models import Post, Comment, Image
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('id', 'title', 'author', 'date', 'body')
 
+
 class ImageSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
-    post_id = serializers.RelatedField(source='post', read_only=True)
+    post_id = serializers.IntegerField(source='post.id', read_only=True)
 
     class Meta:
         model = Image
@@ -20,8 +21,9 @@ class ImageSerializer(serializers.ModelSerializer):
         photo_url = image.image.url
         return request.build_absolute_uri(photo_url)
 
+
 class CommentSerializer(serializers.ModelSerializer):
-    post_id = serializers.RelatedField(source='post', read_only=True)
+    post_id = serializers.IntegerField(source='post.id', read_only=True)
 
     class Meta:
         model = Comment
