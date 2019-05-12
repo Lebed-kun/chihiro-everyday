@@ -1,12 +1,19 @@
 import React from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
+import { BASE_URL } from '../constants';
 import { validateInput, validateForm, clearInputCheck } from '../utils';
 
-class SubmitComment extends React.Component {
-    constructor() {
-        super();
+import * as actions from '../store/actions/actions';
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSubmit : data => dispatch(actions.addComment(data))
     }
-    
+}
+
+class SubmitComment extends React.Component {
     state = {
         name : '',
         email : '',
@@ -20,12 +27,30 @@ class SubmitComment extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        validateForm({
+        let isFormValid = validateForm({
             form : e.target,
             formInvalidClass : 'form-invalid',
             formValidClass : 'form-valid',
             inputErrorClass : 'input-error'
         });
+
+        if (isFormValid) {
+
+            /* axios.post(`${BASE_URL}/api/${postId}/add_comment/`, {
+                name : this.state.name,
+                email : this.state.email,
+                text : this.state.text
+            })
+                .then(res => console.log(res))
+                .catch(err => console.log(err)); */
+
+            this.props.onSubmit({
+                postId : this.props.postId,
+                name : this.state.name,
+                email : this.state.email,
+                text : this.state.text
+            })
+        }
     }
 
     handleBlur = e => {
@@ -70,4 +95,4 @@ class SubmitComment extends React.Component {
     }
 }
 
-export default SubmitComment;
+export default connect(null, mapDispatchToProps)(SubmitComment);

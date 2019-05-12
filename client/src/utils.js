@@ -1,4 +1,8 @@
 export function formatDate(date, pattern) {
+    if (typeof date == 'string') {
+      date = new Date(date);
+    }
+
     let res = pattern.replace('Y', date.getFullYear());
 
     let month = (date.getMonth() < 9 ? '0' : '') +
@@ -86,4 +90,7 @@ export function validateForm(options) {
       if (!options.form.classList.contains(options.formInvalidClass)) {
         options.form.classList.add(options.formValidClass);
       }
+
+    return options.form.classList.contains(options.formValidClass) && 
+     !options.form.classList.contains(options.formInvalidClass);
 }
