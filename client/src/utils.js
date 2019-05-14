@@ -98,7 +98,7 @@ export function validateForm(options) {
 export function getQueryFromURL(url) {
     if (url) {
       let qId = url.indexOf('?');
-      return url.slice(qId);
+      return qId > -1 ? url.slice(qId) : '?';
     } else {
       return url
     }

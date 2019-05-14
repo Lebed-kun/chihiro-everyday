@@ -1,10 +1,13 @@
 import React from 'react';
 
+import SearchBar from './SearchBar';
+
 function Layout(props) {
     return (
         <div className="Layout">
             <header>
-                {props.searchBar}
+                <SearchBar baseUrl="/?q=" />
+
                 <ul className="navigation">
                     <li>
                         <a href="/">Home</a>

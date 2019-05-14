@@ -4,9 +4,9 @@ function Paginator(props) {
     return (
         <ul>
             {
-                props.prevPage ? 
+                props.prevUrl ? 
                     <li key="page_prev">
-                        <a href={props.baseUrl + props.prevPage}>
+                        <a href={props.prevUrl}>
                             <i className="fas fa-chevron-left"></i>
                         </a>
                     </li> : 
@@ -14,9 +14,9 @@ function Paginator(props) {
             }
 
             {
-                props.nextPage ?
+                props.nextUrl ?
                     <li key="page_next">
-                        <a href={props.baseUrl + props.nextPage}>
+                        <a href={props.nextUrl}>
                             <i className="fas fa-chevron-right"></i>
                         </a>
                     </li> :

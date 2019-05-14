@@ -7,6 +7,7 @@ import { formatDate } from '../utils';
 import Layout from './Layout';
 import CommentList from './CommentList';
 import Form from './SubmitComment';
+import SearchBar from './SearchBar';
 
 class PostDetail extends React.Component {
     state = {
@@ -70,7 +71,7 @@ class PostDetail extends React.Component {
                         {<CommentList postId={postId} />}
                     </div>
                 )
-            } />
+            }/>
         )
     }
 }

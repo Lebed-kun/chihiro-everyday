@@ -19,7 +19,13 @@ class PostList extends React.Component {
     componentDidMount() {
         const page = queryString.parse(this.props.location.search)
             .page;
-        const query = page ? `?page=${page}` : '';
+        const q = queryString.parse(this.props.location.search)
+            .q;
+        let query = queryString.stringify({
+            q,
+            page
+        });
+        query = query ? '?' + query : '';
     
         
         axios.get(`${BASE_URL}/api/${query}`)
@@ -58,7 +64,7 @@ class PostList extends React.Component {
                 </ul>
         );
 
-        let nextPage = queryString.parse(
+        /* let nextPage = queryString.parse(
             getQueryFromURL(this.state.nextPage)
         ).page;
         let prevPage = queryString.parse(
@@ -69,15 +75,20 @@ class PostList extends React.Component {
                 .parse(this.props.location.search)
                 .page - 1
             : null
-        );
+        ); */
+
+        let nextUrl = getQueryFromURL(this.state.nextPage);
+        nextUrl = nextUrl ? '/' + nextUrl : null;
+        let prevUrl = getQueryFromURL(this.state.prevPage);
+        console.log(this.state.prevPage);
+        prevUrl = prevUrl ? '/' + prevUrl : null;
+
 
         return (
             <Layout content={List} 
             footer={<Paginator 
-                nextPage={nextPage} 
-                prevPage={prevPage}
-                baseUrl="/?page="
-            />} />
+            nextUrl={nextUrl} 
+            prevUrl={prevUrl} />} />
         )
     }
 }
