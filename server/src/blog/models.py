@@ -6,7 +6,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
-    body = models.TextField(max_length=20000)
+    body = models.TextField(max_length=15000)
 
     def __str__(self):
         return "%s %s" % (self.title, self.author)
@@ -18,7 +18,7 @@ class Image(models.Model):
 class Comment(models.Model):
     name = models.CharField(max_length=100, blank=True)
     email = models.CharField(max_length=100, blank=True)
-    text = models.TextField(max_length=2000)
+    text = models.TextField(max_length=1500)
     date = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 

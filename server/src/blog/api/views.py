@@ -4,14 +4,30 @@ from rest_framework.generics import (
     CreateAPIView
 )
 
+from django.db.models import Q
+from django.db.models.functions import Substr
+
 from blog.models import Post, Comment, Image
 from .serializers import PostSerializer, CommentSerializer, ImageSerializer
 from .paginators import PostPagination, CommentPagination
 
 class PostListView(ListAPIView):
-    queryset = Post.objects.all().order_by('-date')
     serializer_class = PostSerializer
     pagination_class = PostPagination
+
+    def get_queryset(self):
+        queryset = Post.objects.all().order_by('-date')
+
+        # Search for words in title and body
+        query = self.request.query_params.get('q', None)
+        if query is not None:
+            query = query.split()
+            condition = Q(title__contains=query[0]) | Q(body__contains=query[0])
+            for keyword in query[1:]:
+                condition |= Q(title__contains=keyword) | Q(body__contains=keyword)
+            queryset = queryset.filter(condition)
+        
+        return queryset
 
 class PostDetailView(RetrieveAPIView):
     queryset = Post.objects.all()
