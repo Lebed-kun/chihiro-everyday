@@ -6,10 +6,12 @@ from rest_framework.generics import (
 
 from blog.models import Post, Comment, Image
 from .serializers import PostSerializer, CommentSerializer, ImageSerializer
+from .paginators import PostPagination, CommentPagination
 
 class PostListView(ListAPIView):
     queryset = Post.objects.all().order_by('-date')
     serializer_class = PostSerializer
+    pagination_class = PostPagination
 
 class PostDetailView(RetrieveAPIView):
     queryset = Post.objects.all()
@@ -17,6 +19,7 @@ class PostDetailView(RetrieveAPIView):
 
 class CommentListView(ListAPIView):
     serializer_class = CommentSerializer
+    pagination_class = CommentPagination
     
     def get_queryset(self):
         p = self.kwargs['pk']
