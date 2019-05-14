@@ -103,3 +103,9 @@ export function getQueryFromURL(url) {
       return url
     }
 }
+
+export function trimText(text, maxLength, placeholder=' . . . ') {
+    let upperBound = maxLength - placeholder.length;
+    return text.length <= upperBound ? text :
+      text.slice(0, upperBound) + placeholder;
+}

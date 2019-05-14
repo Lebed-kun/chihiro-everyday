@@ -14,18 +14,32 @@ const mapStateToProps = state => {
 
 class CommentList extends React.Component {
     state = {
-        comments : []
+        comments : [],
+        nextPage : null
     }
 
-    getComments = () => {
+    getComments = (next=false) => {
         const postId = this.props.postId;
+        const url = !next ?
+            `${BASE_URL}/api/${postId}/comments/` :
+            this.state.nextPage;
         
-        axios.get(`${BASE_URL}/api/${postId}/comments/`)
+        axios.get(url)
             .then(res => {
+                const comments = !next ? res.data.results :
+                    this.state.comments.concat(
+                        res.data.results
+                    );
+                
                 this.setState({
-                    comments : res.data
+                    comments,
+                    nextPage : res.data.next
                 })
             });
+    }
+
+    handleClick = e => {
+        this.getComments(true);
     }
 
     componentDidMount() {
@@ -60,10 +74,18 @@ class CommentList extends React.Component {
                         </p>
     
                         <footer>
-                            {formatDate(comment.date, 'd.m.Y H:S')}
+                            {formatDate(comment.date, 'd.m.Y H:M')}
                         </footer>
                     </li>
                 ))}
+
+                {
+                    this.state.nextPage ? 
+                        <button id="show_more" onClick={this.handleClick}>
+                            Show more
+                        </button>
+                    : null
+                }
             </ul>
         );
     }

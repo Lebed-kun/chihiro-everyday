@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 
-import { BASE_URL } from '../constants';
-import { formatDate, getQueryFromURL } from '../utils';
+import { BASE_URL, PREVIEW_MAX_LENGTH } from '../constants';
+import { formatDate, getQueryFromURL, trimText } from '../utils';
 
 import Layout from './Layout';
 import Paginator from './Paginator';
@@ -30,8 +30,13 @@ class PostList extends React.Component {
         
         axios.get(`${BASE_URL}/api/${query}`)
             .then(res => {
+                const posts = res.data.results.map(post => 
+                    Object.assign({}, post, {
+                        body : trimText(post.body, PREVIEW_MAX_LENGTH)
+                    }));
+
                 this.setState({
-                    posts : res.data.results,
+                    posts,
                     nextPage : res.data.next,
                     prevPage : res.data.previous
                 });
