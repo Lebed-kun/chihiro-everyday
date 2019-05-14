@@ -94,3 +94,12 @@ export function validateForm(options) {
     return options.form.classList.contains(options.formValidClass) && 
      !options.form.classList.contains(options.formInvalidClass);
 }
+
+export function getQueryFromURL(url) {
+    if (url) {
+      let qId = url.indexOf('?');
+      return url.slice(qId);
+    } else {
+      return url
+    }
+}

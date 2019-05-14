@@ -1,22 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function Layout(props) {
     return (
         <div className="Layout">
-            <ul className="navigation">
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
+            <header>
+                {props.searchBar}
+                <ul className="navigation">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
 
-                <li>
-                    <Link to="/contacts/">Contacts</Link>
-                </li>
-            </ul>
+                    <li>
+                        <a href="/contacts/">Contacts</a>
+                    </li>
+                </ul>
+            </header>
 
             <div className="content">
                 {props.content}
             </div>
+
+            <footer>
+                {props.footer}
+            </footer>
         </div>
     )
 }

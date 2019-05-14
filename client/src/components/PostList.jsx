@@ -1,23 +1,34 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import queryString from 'query-string';
 
 import { BASE_URL } from '../constants';
-import { formatDate } from '../utils';
+import { formatDate, getQueryFromURL } from '../utils';
 
 import Layout from './Layout';
+import Paginator from './Paginator';
 
 class PostList extends React.Component {
     state = {
-        posts : []
+        posts : [],
+        nextPage : null,
+        prevPage : null
     }
     
     componentDidMount() {
-        axios.get(`${BASE_URL}/api/`)
+        const page = queryString.parse(this.props.location.search)
+            .page;
+        const query = page ? `?page=${page}` : '';
+    
+        
+        axios.get(`${BASE_URL}/api/${query}`)
             .then(res => {
                 this.setState({
-                    posts : res.data
-                })
+                    posts : res.data.results,
+                    nextPage : res.data.next,
+                    prevPage : res.data.previous
+                });
             });
     }
     
@@ -46,9 +57,27 @@ class PostList extends React.Component {
                     ))}
                 </ul>
         );
-        
+
+        let nextPage = queryString.parse(
+            getQueryFromURL(this.state.nextPage)
+        ).page;
+        let prevPage = queryString.parse(
+            getQueryFromURL(this.state.prevPage)
+        ).page || (
+            this.props.location.search ? 
+            queryString
+                .parse(this.props.location.search)
+                .page - 1
+            : null
+        );
+
         return (
-            <Layout content={List} />
+            <Layout content={List} 
+            footer={<Paginator 
+                nextPage={nextPage} 
+                prevPage={prevPage}
+                baseUrl="/?page="
+            />} />
         )
     }
 }

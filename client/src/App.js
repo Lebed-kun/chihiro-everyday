@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={PostList} />
-        <Route exact path="/posts/:postId" component={PostDetail} />
+        <Route exact path="/posts/:postId/" component={PostDetail} />
         <Route exact path="/contacts/" component={Contacts} />
       </Switch>
     </BrowserRouter>
