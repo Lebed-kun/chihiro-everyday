@@ -8,7 +8,7 @@ from blog.models import Post, Comment, Image
 from .serializers import PostSerializer, CommentSerializer, ImageSerializer
 
 class PostListView(ListAPIView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-date')
     serializer_class = PostSerializer
 
 class PostDetailView(RetrieveAPIView):
@@ -20,7 +20,7 @@ class CommentListView(ListAPIView):
     
     def get_queryset(self):
         p = self.kwargs['pk']
-        return Comment.objects.filter(post=p)
+        return Comment.objects.filter(post=p).order_by('-date')
 
 
 class CommentCreateView(CreateAPIView):
