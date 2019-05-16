@@ -64,6 +64,14 @@
     font-size: 3rem;
 }
 
+.PostDetail .images li {
+    margin: 0 1rem;
+}
+
+.PostDetail .images .row {
+    align-items: flex-start
+}
+
 .PostDetail footer {
     border-top: 1px solid #aaa;
     font-weight: 300;
