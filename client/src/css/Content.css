@@ -42,21 +42,41 @@
     padding: 1rem 0;
 }
 
-.Layout footer 
-{
-    border-top: 1px solid black;
-}
-
 .Paginator li {
     font-size: 2rem;
 }
 
 .Paginator li a {
     color: rgb(128, 128, 128);
-    font-weight: bold;
+    font-weight: 300;
     text-decoration: none;
 }
 
 .Paginator li a:hover {
     color: rgb(184, 184, 184);
 }
+
+.PostDetail {
+    padding-top: 1rem;
+}
+
+.PostDetail h1 {
+    font-size: 3rem;
+}
+
+.PostDetail footer {
+    border-top: 1px solid #aaa;
+    font-weight: 300;
+    font-style: italic;
+
+    overflow: hidden;
+}
+
+.PostDetail footer span:first-child {
+    float: left;
+}
+
+.PostDetail footer span:last-child {
+    float: right;
+}
+

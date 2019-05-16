@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 
-import { BASE_URL } from '../constants';
+import { COMMENT_MAX_LENGTH } from '../constants';
 import { validateInput, validateForm, clearInputCheck } from '../utils';
 
 import * as actions from '../store/actions/actions';
+
+import '../css/SubmitComment.css';
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -35,15 +36,6 @@ class SubmitComment extends React.Component {
         });
 
         if (isFormValid) {
-
-            /* axios.post(`${BASE_URL}/api/${postId}/add_comment/`, {
-                name : this.state.name,
-                email : this.state.email,
-                text : this.state.text
-            })
-                .then(res => console.log(res))
-                .catch(err => console.log(err)); */
-
             this.props.onSubmit({
                 postId : this.props.postId,
                 name : this.state.name,
@@ -63,33 +55,59 @@ class SubmitComment extends React.Component {
     
     render() {
         return (
-            <form className="post-comment" onSubmit={this.handleSubmit}>
-                <label htmlFor="name">
-                    Name:
-                    <input type="text" id="name" onChange={this.handleChange} />
-                </label>
+            <form className="post-comment container" onSubmit={this.handleSubmit}
+            style={{width : '50%'}}>
+                <div className="row">
+                    <h1 className="col-md-12"
+                    style={{
+                        fontSize : '1.5rem',
+                        textAlign : 'center',
+                        margin : '1.5rem 0'
+                    }}>
+                        Leave Comment
+                    </h1>
+                </div>
+
+                <div className="row">
+                    <label htmlFor="name" className="col-md-6">
+                        <p>Name:</p>
+                        <input type="text" id="name" onChange={this.handleChange} />
+                    </label>
+
+                    <label htmlFor="email" className="col-md-6">
+                        <p>E-mail:</p>
+                        <input type="text" id="email" onChange={this.handleChange} 
+                        datavalidator="email"
+                        onBlur={this.handleBlur} 
+                        onFocus={this.handleFocus} 
+                        />
+                    </label>
+                </div>
     
-                <label htmlFor="email">
-                    E-mail:
-                    <input type="text" id="email" onChange={this.handleChange} 
-                    datavalidator="email"
-                    onBlur={this.handleBlur} 
-                    onFocus={this.handleFocus} 
-                    />
-                </label>
+                <div className="row">
+                    <label htmlFor="text" className="col-md-12">
+                        <p>Text:</p>
+                        <textarea id="text" onChange={this.handleChange}
+                        datarequired="true"
+                        datamaxlength="1500"
+                        onBlur={this.handleBlur} 
+                        onFocus={this.handleFocus}>
+                        </textarea>
+                        <p className="counter" style={{
+                            color : this.state.text.length <= COMMENT_MAX_LENGTH ?
+                                '#333' : 'rgb(255, 57, 57)',
+                            float : 'right'
+                        }}>
+                            {this.state.text.length} / {COMMENT_MAX_LENGTH}
+                        </p>
+                    </label>
+                </div>
     
-                <label htmlFor="text">
-                    Text:
-                    <textarea id="text" onChange={this.handleChange}
-                    datarequired="true"
-                    onBlur={this.handleBlur} 
-                    onFocus={this.handleFocus}>
-                    </textarea>
-                </label>
-    
-                <button type="submit">
-                    Submit
-                </button>
+                <div className="row">
+                    <button type="submit" className="mx-auto">
+                        Submit
+                    </button>
+                </div>
             </form>
         )
     }

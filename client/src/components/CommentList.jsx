@@ -54,36 +54,51 @@ class CommentList extends React.Component {
     
     render() {
         return (
-            <ul className="comments">
-                <h1>Comments</h1>
+            <ul className="comments container"
+            style={{marginTop : '3rem'}}>
+                <div className="row">
+                    <h1 className="col-md-12" 
+                    style={{fontSize : '2rem'}}>
+                    Comments
+                    </h1>
+                </div>
     
                 {this.state.comments.map((comment, id) => (
-                    <li key={`comment_${id}`}>
-                        <h2>
-                            { 
-                                comment.email ? 
-                                <a href={`mailto:${comment.email}`}>
-                                    {comment.name || 'Anonymous'}
-                                </a> :
-                                comment.name || 'Anonymous'
-                            }
-                        </h2>
+                    <li key={`comment_${id}`} className="container rounded">
+                        <div className="row">
+                            <h2 className="col-md-12">
+                                { 
+                                    comment.email ? 
+                                    <a href={`mailto:${comment.email}`}>
+                                        {comment.name || 'Anonymous'}
+                                    </a> :
+                                    comment.name || 'Anonymous'
+                                }
+                            </h2>
+                        </div>
     
-                        <p>
-                            {comment.text}
-                        </p>
-    
-                        <footer>
-                            {formatDate(comment.date, 'd.m.Y H:M')}
-                        </footer>
+                        <div className="row">
+                            <p className="col-md-12">
+                                {comment.text}
+                            </p>
+                        </div>
+                        
+                        <div className="row">
+                            <footer className="col-md-12">
+                                {formatDate(comment.date, 'd.m.Y H:M')}
+                            </footer>
+                        </div>
                     </li>
                 ))}
 
                 {
                     this.state.nextPage ? 
-                        <button id="show_more" onClick={this.handleClick}>
-                            Show more
-                        </button>
+                        <div className="row">
+                            <button id="show_more" onClick={this.handleClick}
+                            className="mx-auto">
+                                Show More
+                            </button>
+                        </div>
                     : null
                 }
             </ul>

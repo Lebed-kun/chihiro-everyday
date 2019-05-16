@@ -47,7 +47,24 @@ const checkInput = input => {
       return input.value.length == 0 || !!input.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     }
 
-    return checkRequired(input) && checkEmail(input);
+    function checkMaxLength(input) {
+        if (!input.hasAttribute('datamaxlength')) {
+          return true;
+        }
+
+        return input.value.length <= +input.getAttribute('datamaxlength');
+    }
+
+    function checkMinLength(input) {
+      if (!input.hasAttribute('dataminlength')) {
+        return true;
+      }
+
+      return input.value.length >= +input.getAttribute('dataminlength');
+  }
+
+    return checkRequired(input) && checkEmail(input) &&
+      checkMinLength(input) && checkMaxLength(input);
 }
 
 export function validateInput(input, inputErrorClass) {

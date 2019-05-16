@@ -42,12 +42,21 @@ class PostDetail extends React.Component {
             <div className="post">
                 <h1>{post.title}</h1>
         
-                <ul>
+                <ul className="images container-fluid">
+                    <div className="row">
                     {images.map((imageData, id) => (
-                        <li key={`post_img_${id}`}>
-                            <img src={imageData.image_url} />
+                        <li key={`post_img_${id}`} className="col-md-3 rounded shadowed"
+                        style={{
+                            border : '2px solid #aaa',
+                            padding : '0'
+                        }}>
+                            <a href={imageData.image_url} target="_blank">
+                                <img src={imageData.image_url} 
+                                className="img-fluid" />
+                            </a>
                         </li>
                     ))}
+                    </div>
                 </ul>
         
                 <p>
