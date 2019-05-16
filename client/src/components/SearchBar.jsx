@@ -10,7 +10,6 @@ class SearchBar extends React.Component {
         e.preventDefault();
 
         if (this.state.query) {
-            console.log(this.state.query);
             window.location.href = this.props.baseUrl + this.state.query;
         }
     }

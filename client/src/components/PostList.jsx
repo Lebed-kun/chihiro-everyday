@@ -93,7 +93,8 @@ class PostList extends React.Component {
             <Layout content={List} 
             footer={<Paginator 
             nextUrl={nextUrl} 
-            prevUrl={prevUrl} />} />
+            prevUrl={prevUrl} 
+            />} />
         )
     }
 }

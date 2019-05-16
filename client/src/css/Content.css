@@ -1,0 +1,4 @@
+.Layout .content {
+    --padding-top: calc(1.5rem + 0.75rem * 2);
+    padding-top: calc(var(--padding-top) + 1rem);
+}
