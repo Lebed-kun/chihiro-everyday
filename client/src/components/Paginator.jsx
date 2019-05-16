@@ -2,12 +2,12 @@ import React from 'react';
 
 function Paginator(props) {
     return (
-        <ul>
+        <ul className="Paginator" style={{marginTop : '1rem'}}>
             {
                 props.prevUrl ? 
-                    <li key="page_prev">
+                    <li key="page_prev" style={{float : 'left'}}>
                         <a href={props.prevUrl}>
-                            <i className="fas fa-chevron-left"></i>
+                            Prev
                         </a>
                     </li> : 
                     null
@@ -15,9 +15,9 @@ function Paginator(props) {
 
             {
                 props.nextUrl ?
-                    <li key="page_next">
+                    <li key="page_next" style={{float : 'right'}}>
                         <a href={props.nextUrl}>
-                            <i className="fas fa-chevron-right"></i>
+                            Next
                         </a>
                     </li> :
                     null

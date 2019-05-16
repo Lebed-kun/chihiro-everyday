@@ -31,3 +31,14 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+.rounded {
+  border-radius: 10px;
+  -o-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.shadowed {
+  box-shadow: 0 0 6px rgb(100, 100, 100);
+}

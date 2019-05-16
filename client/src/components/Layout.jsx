@@ -32,11 +32,11 @@ function Layout(props) {
                 </div>
             </header>
 
-            <div className="content">
+            <div className="content container">
                 {props.content}
             </div>
 
-            <footer>
+            <footer className="container">
                 {props.footer}
             </footer>
         </div>

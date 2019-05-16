@@ -2,3 +2,61 @@
     --padding-top: calc(1.5rem + 0.75rem * 2);
     padding-top: calc(var(--padding-top) + 1rem);
 }
+
+.PostList li {
+    border: 2px solid rgb(139, 139, 139);
+    background: rgb(255, 255, 228);
+    padding: 0.5rem;
+    margin-top: 1rem;
+}
+
+.PostList li h1 {
+    color: black;
+    font-size: 2rem;
+}
+
+.PostList li a:hover {
+    text-decoration: none;
+}
+
+.PostList li h2 {
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    overflow: hidden;
+}
+
+.PostList li h2 span:first-child {
+    float: left;
+}
+
+.PostList li h2 span:last-child {
+    float: right;
+}
+
+.PostList li p {
+    font-size: 1.2rem;
+    border-top: 1px dashed rgb(139, 139, 139);
+
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.Layout footer 
+{
+    border-top: 1px solid black;
+}
+
+.Paginator li {
+    font-size: 2rem;
+}
+
+.Paginator li a {
+    color: rgb(128, 128, 128);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Paginator li a:hover {
+    color: rgb(184, 184, 184);
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 
 import { BASE_URL, PREVIEW_MAX_LENGTH } from '../constants';
@@ -49,10 +48,10 @@ class PostList extends React.Component {
         const List = (
             <ul className="PostList">
                     {data.map((post, id) => (
-                        <li key={`post_${id}`}>
-                            <Link to={`/posts/${post.id}`}>
+                        <li key={`post_${id}`} className="rounded shadowed">
+                            <a href={`/posts/${post.id}`}>
                                 <h1>{post.title}</h1>
-                            </Link>
+                            </a>
         
                             <h2>
                                 <span>by {post.author}</span>
@@ -68,19 +67,6 @@ class PostList extends React.Component {
                     ))}
                 </ul>
         );
-
-        /* let nextPage = queryString.parse(
-            getQueryFromURL(this.state.nextPage)
-        ).page;
-        let prevPage = queryString.parse(
-            getQueryFromURL(this.state.prevPage)
-        ).page || (
-            this.props.location.search ? 
-            queryString
-                .parse(this.props.location.search)
-                .page - 1
-            : null
-        ); */
 
         let nextUrl = getQueryFromURL(this.state.nextPage);
         nextUrl = nextUrl ? '/' + nextUrl : null;
