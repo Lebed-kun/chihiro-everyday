@@ -22,9 +22,11 @@ class PostListView(ListAPIView):
         query = self.request.query_params.get('q', None)
         if query is not None:
             query = query.split()
-            condition = Q(title__contains=query[0]) | Q(body__contains=query[0])
+            word = query[0].lower()
+            condition = (Q(title__icontains=word) | Q(body__icontains=word))
             for keyword in query[1:]:
-                condition |= Q(title__contains=keyword) | Q(body__contains=keyword)
+                word = keyword.lower()
+                condition |= Q(title__icontains=word) | Q(body__icontains=word)
             queryset = queryset.filter(condition)
         
         return queryset
