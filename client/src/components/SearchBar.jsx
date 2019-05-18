@@ -1,5 +1,4 @@
 import React from 'react';
-import queryString from 'query-string';
 
 class SearchBar extends React.Component {
     state = {
@@ -14,7 +13,7 @@ class SearchBar extends React.Component {
         }
     }
 
-    handleChange = e => {
+    handleChange = e => {        
         this.setState({[e.target.id] : e.target.value});
     }
     

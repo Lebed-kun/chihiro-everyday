@@ -64,8 +64,8 @@ class PostDetail extends React.Component {
                 </p>
         
                 <footer>
-                    <span>by {post.author}</span>
-                    <span>posted at {formatDate(post.date, 'd.m.Y H:M')}</span>
+                    <span>Автор: {post.author}</span>
+                    <span>запощено: {formatDate(post.date, 'd.m.Y H:M')}</span>
                 </footer>
             </div>
         ) : null;

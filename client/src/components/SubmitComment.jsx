@@ -35,13 +35,17 @@ class SubmitComment extends React.Component {
             inputErrorClass : 'input-error'
         });
 
-        if (isFormValid) {
+        let isPostingFree = new Date(localStorage.getItem('freeDate')) <= new Date();
+
+        if (isFormValid && isPostingFree) {
             this.props.onSubmit({
                 postId : this.props.postId,
                 name : this.state.name,
                 email : this.state.email,
                 text : this.state.text
             })
+        } else if (!isPostingFree) {
+            alert('Защита от рекламной дрисни. Подожди 7 секунд до постинга коммента');
         }
     }
 
@@ -64,13 +68,13 @@ class SubmitComment extends React.Component {
                         textAlign : 'center',
                         margin : '1.5rem 0'
                     }}>
-                        Leave Comment
+                        Оставь комментарий
                     </h1>
                 </div>
 
                 <div className="row">
                     <label htmlFor="name" className="col-md-6">
-                        <p>Name:</p>
+                        <p>Имя:</p>
                         <input type="text" id="name" onChange={this.handleChange} />
                     </label>
 
@@ -86,7 +90,7 @@ class SubmitComment extends React.Component {
     
                 <div className="row">
                     <label htmlFor="text" className="col-md-12">
-                        <p>Text:</p>
+                        <p>Комментарий:</p>
                         <textarea id="text" onChange={this.handleChange}
                         datarequired="true"
                         datamaxlength="1500"
@@ -105,7 +109,7 @@ class SubmitComment extends React.Component {
     
                 <div className="row">
                     <button type="submit" className="mx-auto">
-                        Submit
+                        Отправить
                     </button>
                 </div>
             </form>

@@ -1,3 +1,7 @@
+:root {
+  font-size: 16px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,6 +9,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: url('./background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 code {
@@ -13,17 +21,19 @@ code {
 }
 
 .input-error {
-  border: 1px solid rgb(255, 57, 57);
+  border: 1px solid rgb(255, 57, 57) !important;
 }
 
 .form-invalid::before {
-  content : 'Invalid input!';
+  content : 'Неверный ввод!';
   color: rgb(255, 57, 57);
+  font-size: 1.2rem;
 }
 
 .form-valid::before {
-  content : 'Success!';
+  content : 'Коммент успешно отправлен!';
   color: rgb(77, 255, 77);
+  font-size: 1.2rem;
 }
 
 ul {

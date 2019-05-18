@@ -45,8 +45,23 @@ class PostList extends React.Component {
     render() {
         const data = this.state.posts;
         
+        let q = queryString.parse(this.props.location.search)
+        .q;
+
         const List = (
             <ul className="PostList">
+                    <h1 style={{
+                        marginTop : '1rem',
+                        textAlign : !q ? 'center' : 'left',
+                        fontSize : !q ? '3rem' : '1.5rem'
+                    }}>
+                        {                
+                            !q ?
+                            'Chihiro Days' :
+                            `Результаты поиска "${q}"`
+                        }
+                    </h1>
+                    
                     {data.map((post, id) => (
                         <li key={`post_${id}`} className="rounded shadowed">
                             <a href={`/posts/${post.id}`}>
@@ -54,9 +69,9 @@ class PostList extends React.Component {
                             </a>
         
                             <h2>
-                                <span>by {post.author}</span>
+                                <span>Автор: {post.author}</span>
                                 <span>
-                                    posted at {formatDate(post.date, 'd.m.Y H:M')}
+                                    запощено: {formatDate(post.date, 'd.m.Y H:M')}
                                 </span>
                             </h2>
         
@@ -71,7 +86,6 @@ class PostList extends React.Component {
         let nextUrl = getQueryFromURL(this.state.nextPage);
         nextUrl = nextUrl ? '/' + nextUrl : null;
         let prevUrl = getQueryFromURL(this.state.prevPage);
-        console.log(this.state.prevPage);
         prevUrl = prevUrl ? '/' + prevUrl : null;
 
 

@@ -88,3 +88,7 @@
     float: right;
 }
 
+.Layout footer {
+    border-top: 1px solid #aaa;
+    margin-top: 1rem;
+}

@@ -10,20 +10,23 @@
 }
 
 .Layout header .SearchBar input {
-    width: 90%;
+    width: 82.5%;
     border: none;
 }
 
 .Layout header .SearchBar button {
-    background: hsl(240, 100%, 63%);
+    background: rgb(66, 66, 254);
     color: white;
     border: none;
-
-    width: 10%;
 }
 
 .Layout header .SearchBar button:hover {
-    background: hsl(240, 100%, 77%);
+    background: rgb(41, 41, 245);
+
+    box-shadow: 0 0 6px rgb(41, 41, 245);
+    -o-box-shadow: 0 0 6px rgb(41, 41, 245);
+    -moz-box-shadow: 0 0 6px rgb(41, 41, 245);
+    -webkit-box-shadow: 0 0 6px rgb(41, 41, 245);
 }
 
 .Layout header ul {

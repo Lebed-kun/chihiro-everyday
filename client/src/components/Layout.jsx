@@ -21,11 +21,11 @@ function Layout(props) {
                             justifyContent : 'flex-end'
                         }}>
                             <li>
-                                <a href="/">Home</a>
+                                <a href="/">Главная</a>
                             </li>
 
                             <li>
-                                <a href="/contacts/">Contacts</a>
+                                <a href="/contacts/">Контакты</a>
                             </li>
                         </ul>
                     </div>

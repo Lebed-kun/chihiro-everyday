@@ -59,7 +59,7 @@ class CommentList extends React.Component {
                 <div className="row">
                     <h1 className="col-md-12" 
                     style={{fontSize : '2rem'}}>
-                    Comments
+                    Комментарии
                     </h1>
                 </div>
     
@@ -70,9 +70,9 @@ class CommentList extends React.Component {
                                 { 
                                     comment.email ? 
                                     <a href={`mailto:${comment.email}`}>
-                                        {comment.name || 'Anonymous'}
+                                        {comment.name || 'Аноним'}
                                     </a> :
-                                    comment.name || 'Anonymous'
+                                    comment.name || 'Аноним'
                                 }
                             </h2>
                         </div>
@@ -96,7 +96,7 @@ class CommentList extends React.Component {
                         <div className="row">
                             <button id="show_more" onClick={this.handleClick}
                             className="mx-auto">
-                                Show More
+                                Показать еще
                             </button>
                         </div>
                     : null
