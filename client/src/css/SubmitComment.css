@@ -80,3 +80,8 @@
     color: white;
 }
 
+.comments footer {
+    margin-top: 0;
+    background: rgb(207, 207, 207);
+}
+
