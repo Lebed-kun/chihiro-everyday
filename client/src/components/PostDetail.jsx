@@ -22,6 +22,9 @@ class PostDetail extends React.Component {
                 this.setState({
                     post : res.data
                 })
+            })
+            .catch(err => {
+                this.props.history.push('/404/');
             });
 
         axios.get(`${BASE_URL}/api/${postId}/images/`)

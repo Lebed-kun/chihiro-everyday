@@ -11,8 +11,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background: url('./background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 code {
