@@ -37,38 +37,40 @@ class PostDetail extends React.Component {
         const images = this.state.images;
 
         const postId = this.props.match.params.postId;
-        
-        const Post = Object.keys(post).length ? (
-            <div className="post">
-                <h1>{post.title}</h1>
-        
-                <ul className="images container-fluid">
-                    <div className="row">
-                    {images.map((imageData, id) => (
-                        <li key={`post_img_${id}`} className="col-md-3 rounded shadowed"
-                        style={{
-                            border : '2px solid #aaa',
-                            padding : '0'
-                        }}>
-                            <a href={imageData.image_url} target="_blank">
-                                <img src={imageData.image_url} 
-                                className="img-fluid" />
-                            </a>
-                        </li>
-                    ))}
-                    </div>
-                </ul>
-        
-                <p>
-                    {post.body}
-                </p>
-        
-                <footer>
-                    <span>Автор: {post.author}</span>
-                    <span>запощено: {formatDate(post.date, 'd.m.Y H:M')}</span>
-                </footer>
-            </div>
-        ) : null;
+
+        let Post = null;
+        if (Object.keys(post).length) {
+            Post = (
+                <div className="post">
+                    <h1>{post.title}</h1>
+            
+                    <ul className="images container-fluid">
+                        <div className="row">
+                        {images.map((imageData, id) => (
+                            <li key={`post_img_${id}`} className="col-md-3 rounded shadowed"
+                            style={{
+                                border : '2px solid #aaa',
+                                padding : '0'
+                            }}>
+                                <a href={imageData.image_url} target="_blank">
+                                    <img src={imageData.image_url} 
+                                    className="img-fluid" />
+                                </a>
+                            </li>
+                        ))}
+                        </div>
+                    </ul>
+            
+                    <p dangerouslySetInnerHTML={{ __html : post.body }}>
+                    </p>
+            
+                    <footer>
+                        <span>Автор: {post.author}</span>
+                        <span>запощено: {formatDate(post.date, 'd.m.Y H:M')}</span>
+                    </footer>
+                </div>
+            );
+        }
         
         return (
             <Layout content={

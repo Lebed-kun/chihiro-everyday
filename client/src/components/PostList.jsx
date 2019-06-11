@@ -75,8 +75,7 @@ class PostList extends React.Component {
                                 </span>
                             </h2>
         
-                            <p>
-                                {post.body}
+                            <p dangerouslySetInnerHTML={{ __html : post.body }}>
                             </p>
                         </li>
                     ))}
