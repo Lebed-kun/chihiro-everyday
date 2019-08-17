@@ -1,3 +1,13 @@
+.post-comment.container {
+    width: 50%;
+}
+
+@media only screen and (max-width: 992px) {
+    .post-comment.container {
+        width: 80%;
+    }
+}
+
 .post-comment input,
 .post-comment textarea {
     width: 100%;
@@ -19,7 +29,7 @@
     border: 2px solid rgb(72, 72, 247);
 
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
 
     width: 50%;

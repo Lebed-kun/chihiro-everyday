@@ -7,5 +7,5 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('blog.api.urls')),
-    re_path('.*', TemplateView.as_view(template_name='index.html'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\
+    + [re_path('.*', TemplateView.as_view(template_name='index.html'))]

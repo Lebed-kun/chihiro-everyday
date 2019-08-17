@@ -59,10 +59,9 @@ class SubmitComment extends React.Component {
     
     render() {
         return (
-            <form className="post-comment container" onSubmit={this.handleSubmit}
-            style={{width : '50%'}}>
+            <form className="post-comment container" onSubmit={this.handleSubmit}>
                 <div className="row">
-                    <h1 className="col-md-12"
+                    <h1 className="col-12"
                     style={{
                         fontSize : '1.5rem',
                         textAlign : 'center',
@@ -73,12 +72,12 @@ class SubmitComment extends React.Component {
                 </div>
 
                 <div className="row">
-                    <label htmlFor="name" className="col-md-6">
+                    <label htmlFor="name" className="col-lg-6">
                         <p>Имя:</p>
                         <input type="text" id="name" onChange={this.handleChange} />
                     </label>
 
-                    <label htmlFor="email" className="col-md-6">
+                    <label htmlFor="email" className="col-lg-6">
                         <p>E-mail:</p>
                         <input type="text" id="email" onChange={this.handleChange} 
                         datavalidator="email"
