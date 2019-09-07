@@ -1,0 +1,106 @@
+.Layout {
+    .content {
+        $padding-top: 1.5rem + 0.75rem * 2;
+        padding-top: $padding-top + 1rem;
+    }
+
+    footer {
+        border-top: 1px solid #aaa;
+        margin-top: 1rem;
+    }
+}
+
+.PostList {
+    li {
+        border: 2px solid rgb(139, 139, 139);
+        background: rgb(255, 255, 228);
+        padding: 0.5rem;
+        margin-top: 1rem;
+
+        h1 {
+            color: black;
+            font-size: 2rem;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 1rem;
+            font-weight: 300;
+            font-style: italic;
+            overflow: hidden;
+
+            span {
+                &:first-child {
+                    float: left;
+                }
+
+                &:last-child {
+                    float: right;
+                }
+            }
+        }
+
+        p {
+            font-size: 1.2rem;
+            border-top: 1px dashed rgb(139, 139, 139);
+
+            margin: 0;
+            padding: 1rem 0;
+        }
+    }
+}
+
+.Paginator {
+    li {
+        font-size: 2rem;
+
+        a {
+            color: rgb(139, 139, 139);
+            font-weight: 300;
+            text-decoration: none;
+
+            &:hover {
+                color: rgb(184, 184, 184);
+            }
+        }
+    }
+}
+
+.PostDetail {
+    padding-top: 1rem;
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .images {
+        li {
+            margin: 0 1rem;
+        }
+
+        .row {
+            align-items: flex-start;
+        }
+    }
+
+    footer {
+        border-top: 1px solid #aaa;
+        font-weight: 300;
+        font-style: italic;
+
+        overflow: hidden;
+
+        span {
+            &:first-child {
+                float: left;
+            }
+
+            &:last-child {
+                float: right;
+            }
+        }
+    }
+}

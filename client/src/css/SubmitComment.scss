@@ -1,0 +1,97 @@
+.post-comment {
+    &.container {
+        width: 50%;
+
+        @media screen and (max-width: 992px) {
+            width: 80%;
+        }
+    }
+
+    input, textarea {
+        width: 100%;
+        resize: none;
+        background: rgb(219, 230, 219);
+        border: 1px solid #333;
+    }
+    
+    textarea {
+        height: 10rem;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    button {
+        background: rgb(72, 72, 247);
+        border: 2px solid rgb(72, 72, 247);
+
+        color: white;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+
+        width: 50%;
+
+        &:hover {
+            background: rgb(36, 36, 255);
+            border: 2px solid rgb(36, 36, 255);
+
+            box-shadow: 0 0 6px rgb(36, 36, 255);
+            -o-box-shadow: 0 0 6px rgb(36, 36, 255);
+            -moz-box-shadow: 0 0 6px rgb(36, 36, 255);
+            -webkit-box-shadow: 0 0 6px rgb(36, 36, 255);
+        }
+    }
+}
+
+.comments {
+    li {
+        margin: 1rem 0;
+        border: 1px solid black;
+
+        h2 {
+            color: white;
+            background: rgb(18, 99, 18);
+            font-size: 1.5rem;
+            padding: 0.25rem 0;
+            padding-left: 1rem;
+            margin: 0;
+        }
+
+        p {
+            background: rgb(241, 241, 241);
+            margin: 0;
+            padding: 1rem 0;
+            padding-left: 1rem;
+        }
+    }
+
+    button {
+        background: transparent;
+        border: 2px solid rgb(72, 72, 247);
+    
+        color: rgb(72, 72, 247);
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    
+        width: 20%;
+
+        &:hover {
+            background: rgb(36, 36, 255);
+            border: 2px solid rgb(36, 36, 255);
+
+            box-shadow: 0 0 6px rgb(36, 36, 255);
+            -o-box-shadow: 0 0 6px rgb(36, 36, 255);
+            -moz-box-shadow: 0 0 6px rgb(36, 36, 255);
+            -webkit-box-shadow: 0 0 6px rgb(36, 36, 255);
+
+            color: white;
+        }
+    }
+
+    footer {
+        margin-top: 0;
+        background: rgb(207, 207, 207);
+    }
+}
+

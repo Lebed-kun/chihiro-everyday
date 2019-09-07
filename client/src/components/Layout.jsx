@@ -2,8 +2,8 @@ import React from 'react';
 
 import SearchBar from './SearchBar';
 
-import '../css/Header.css';
-import '../css/Content.css';
+import '../css/Header.scss';
+import '../css/Content.scss';
 
 const MENU_ITEMS = [
     {

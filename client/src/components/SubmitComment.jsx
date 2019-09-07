@@ -6,7 +6,7 @@ import { validateInput, validateForm, clearInputCheck } from '../utils';
 
 import * as actions from '../store/actions/actions';
 
-import '../css/SubmitComment.css';
+import '../css/SubmitComment.scss';
 
 const mapDispatchToProps = dispatch => {
     return {
