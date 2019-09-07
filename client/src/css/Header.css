@@ -38,6 +38,14 @@
     margin: 0 1rem;
 }
 
+.Layout header li.active {
+    border-bottom: 2px solid rgb(41, 116, 255);
+}
+
+.Layout header li.active:hover {
+    border-bottom-color: rgb(130, 174, 255);
+}
+
 .Layout header a {
     color: white;
     text-decoration: none;

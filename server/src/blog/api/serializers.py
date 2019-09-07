@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from blog.models import Post, Comment, Image
+from blog.models import Post, Comment, Image, AboutInfo, File
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,3 +28,8 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ('id', 'name', 'email', 'text', 'date', 'post_id')
+
+class AboutInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AboutInfo
+        fields = ('id', 'info')

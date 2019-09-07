@@ -1,9 +1,11 @@
 from django.contrib import admin
 
-from .models import Post, Image, Comment
+from .models import Post, Image, Comment, AboutInfo, File
 
 # Register your models here.
 
 admin.site.register(Post)
 admin.site.register(Image)
 admin.site.register(Comment)
+admin.site.register(AboutInfo)
+admin.site.register(File)

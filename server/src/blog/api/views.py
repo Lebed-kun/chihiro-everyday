@@ -1,14 +1,18 @@
 from rest_framework.generics import (
     ListAPIView,
     RetrieveAPIView,
-    CreateAPIView
+    CreateAPIView,
+    GenericAPIView
 )
+from rest_framework.response import Response
+from rest_framework import status
 
 from django.db.models import Q
 from django.db.models.functions import Substr
+from django.http import Http404
 
-from blog.models import Post, Comment, Image
-from .serializers import PostSerializer, CommentSerializer, ImageSerializer
+from blog.models import Post, Comment, Image, AboutInfo
+from .serializers import PostSerializer, CommentSerializer, ImageSerializer, AboutInfoSerializer
 from .paginators import PostPagination, CommentPagination
 
 class PostListView(ListAPIView):
@@ -56,4 +60,17 @@ class ImageListView(ListAPIView):
     def get_queryset(self):
         p = self.kwargs['pk']
         return Image.objects.filter(post=p)
+
+class AboutInfoView(GenericAPIView):
+    serializer_class = AboutInfoSerializer
+
+    def get_object(self):
+        try:
+            return AboutInfo.objects.get(pk=1)
+        except AboutInfo.DoesNotExist:
+            raise Http404
+
+    def get(self, request, *args, **kwargs):
+        obj = self.get_object()
+        return Response({'info' : obj.info})
 

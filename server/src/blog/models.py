@@ -25,4 +25,16 @@ class Comment(models.Model):
     def __str__(self):
         return ("%s" % (self.text))[:20]
 
+class AboutInfo(models.Model):
+    info = models.TextField()
+
+    def __str__(self):
+        return self.info[:30]
+
+class File(models.Model):
+    _file = models.FileField(upload_to='files/')
+
+    def __str__(self):
+        return self._file.name
+
 

@@ -5,7 +5,24 @@ import SearchBar from './SearchBar';
 import '../css/Header.css';
 import '../css/Content.css';
 
+const MENU_ITEMS = [
+    {
+        href : '/',
+        label : 'Главная'
+    },
+    {
+        href : '/about/',
+        label : 'Обо мне'
+    },
+    {
+        href : '/contacts/',
+        label : 'Контакты'
+    }
+];
+
 function Layout(props) {
+    const pathName = window.location.pathname;
+    
     return (
         <div className="Layout">
             <header className="container-fluid"
@@ -20,13 +37,11 @@ function Layout(props) {
                             display : 'flex',
                             justifyContent : 'flex-end'
                         }}>
-                            <li>
-                                <a href="/">Главная</a>
-                            </li>
-
-                            <li>
-                                <a href="/contacts/">Контакты</a>
-                            </li>
+                            {MENU_ITEMS.map((el, id) => (
+                                <li key={id} className={el.href === pathName ? 'active' : ''}>
+                                    <a href={el.href}>{el.label}</a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
